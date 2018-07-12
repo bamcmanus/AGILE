@@ -6,6 +6,6 @@ public class SFTPtest {
     @Test
     public void sampleUnitTest() {
         //do some stuff
-        assertThat("This is what your asserting folled by a boolean", true);
+        assertThat("This is what your asserting followed by a boolean", true);
     }
 }

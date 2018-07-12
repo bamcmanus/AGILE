@@ -1,13 +1,15 @@
 import java.util.Scanner;
 
-public class Menu {
-    Scanner sc = new Scanner(System.in);
-    int option;
+class Menu {
+    //members
+    private Scanner sc = new Scanner(System.in);
+    private int option;
 
-    public int mainMenu() {
+    //methods
+    int mainMenu() {
         System.out.println("1. Establish Connection");
         System.out.println("2. Exit");
-        System.out.println("Enter an above option number");
+        System.out.println("Enter an above option number:");
         //catch the option as string, verify string contains 1 or 2, convert to int and return
         option = sc.nextInt();
         return option;
@@ -19,7 +21,7 @@ public class Menu {
      *
      * @return an int with a valid option number
      */
-    public int workingMenu() {
+    int workingMenu() {
         System.out.println("1.  List Directories");
         System.out.println("2.  Get File/Files");
         System.out.println("3.  Put File/Files");
@@ -30,7 +32,7 @@ public class Menu {
         System.out.println("8.  Rename File/Directory");
         System.out.println("9.  View Log History");
         System.out.println("10. Close Connection");
-        System.out.println("Enter an above option number");
+        System.out.println("Enter an above option number:");
         //catch the option as string, verify string contains 1 or 2, convert to int and return
         option = sc.nextInt();
         return option;
