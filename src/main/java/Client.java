@@ -1,4 +1,5 @@
 import com.jcraft.jsch.*;
+import static java.lang.System.out;
 
 
 class Client {
@@ -22,7 +23,7 @@ class Client {
                     Session session = jsch.getSession(username, hostname, 22);
                     session.setPassword(password);
                     session.setConfig("StrictHostKeyChecking", "no");
-                    System.out.println("Establishing Connection...");
+                    out.println("Establishing Connection...");
                     session.connect();
 
                     Channel channel = session.openChannel("sftp");
@@ -30,67 +31,67 @@ class Client {
                     ChannelSftp cSftp = (ChannelSftp) channel;
 
 
-                    System.out.println("Successful SFTP connection");
+                    out.println("Successful SFTP connection");
 
                     do {
                         option = menu.workingMenu(); //display working menu
                         switch (option) {
                             case 1: //list directories: local and remote options
-                                System.out.println("Listing directories...");
+                                out.println("Listing directories...");
                                 break;
 
                             case 2: //get file/files: which files, put where
-                                System.out.println("Getting files...");
+                                out.println("Getting files...");
                                 break;
 
                             case 3: //put file/files: which files put where
-                                System.out.println("Putting Files...");
+                                out.println("Putting Files...");
                                 break;
 
                             case 4: //create directory: name?, where?
-                                System.out.println("Creating directories...");
+                                out.println("Creating directories...");
                                 break;
 
                             case 5: //delete file/directory
-                                System.out.println("Deleting directories...");
+                                out.println("Deleting directories...");
                                 break;
 
                             case 6: //change permissions
-                                System.out.println("Changing permissions...");
+                                out.println("Changing permissions...");
                                 break;
 
                             case 7: //copy directory
-                                System.out.println("Copying directories...");
+                                out.println("Copying directories...");
                                 break;
 
                             case 8: //rename file
-                                System.out.println("Renaming files...");
+                                out.println("Renaming files...");
                                 break;
 
                             case 9: //view log history
-                                System.out.println("Viewing log history...");
+                                out.println("Viewing log history...");
                                 break;
 
                             case 10: //exit
-                                System.out.println("Closing connection...");
+                                out.println("Closing connection...");
                                 cSftp.exit();
                                 session.disconnect();
                                 again = false;
                                 break;
 
                             default:
-                                System.out.println("Try again");
+                                out.println("Try again");
                                 break;
                         }
                     } while (again);
                 } catch (Exception e) {
-                    System.out.println("Client error");
+                    out.println("Client error");
                     e.printStackTrace();
                 }
                 again = true;
             }
             if (option == 2){
-                System.out.println("Goodbye");
+                out.println("Goodbye");
                 again = false;
             }
         } while (again);
