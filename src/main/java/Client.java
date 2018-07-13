@@ -7,8 +7,9 @@ class Client {
         JSch jsch = new JSch(); //init jsch class
         int option = 0; //contains user input for menu navigation
         Menu menu = new Menu(); //init menu class
+        boolean again = true;
 
-        while(option != 2) { //exits loop on "exit program"
+        do {
             option = menu.mainMenu(); //main menu prompt
 
             //login condition
@@ -73,21 +74,27 @@ class Client {
                             case 10: //exit
                                 System.out.println("Closing connection...");
                                 cSftp.exit();
+                                session.disconnect();
+                                again = false;
                                 break;
 
                             default:
                                 System.out.println("Try again");
                                 break;
                         }
-                    } while (option != 10);
+                    } while (again);
                 } catch (Exception e) {
                     System.out.println("Client error");
                     e.printStackTrace();
                 }
+                again = true;
             }
-        }
+            if (option == 2){
+                System.out.println("Goodbye");
+                again = false;
+            }
+        } while (again);
         //exit program
-        System.out.println("Goodbye");
     }
 }
 
