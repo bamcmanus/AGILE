@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import static java.lang.System.out;
 
 class Menu {
     //members
@@ -7,12 +8,16 @@ class Menu {
 
     //methods
     int mainMenu() {
-        System.out.println("1. Establish Connection");
-        System.out.println("2. Exit");
-        System.out.println("Enter an above option number:");
-        //catch the option as string, verify string contains 1 or 2, convert to int and return
-        option = sc.nextInt();
-        return option;
+            out.println("1. Establish Connection");
+            out.println("2. Exit");
+            out.println("Enter an above option number:");
+            //Tests for incorrect input
+            while (!sc.hasNextInt()) {
+                out.print("Enter a valid option: ");
+                sc.nextLine();
+            }
+            option = sc.nextInt();
+            return option;
     }
 
     /**
@@ -22,18 +27,22 @@ class Menu {
      * @return an int with a valid option number
      */
     int workingMenu() {
-        System.out.println("1.  List Directories");
-        System.out.println("2.  Get File/Files");
-        System.out.println("3.  Put File/Files");
-        System.out.println("4.  Create Directory");
-        System.out.println("5.  Delete File/Directory");
-        System.out.println("6.  Change permissions");
-        System.out.println("7.  Copy Directory");
-        System.out.println("8.  Rename File/Directory");
-        System.out.println("9.  View Log History");
-        System.out.println("10. Close Connection");
-        System.out.println("Enter an above option number:");
-        //catch the option as string, verify string contains 1 or 2, convert to int and return
+        out.println("1.  List Directories");
+        out.println("2.  Get File/Files");
+        out.println("3.  Put File/Files");
+        out.println("4.  Create Directory");
+        out.println("5.  Delete File/Directory");
+        out.println("6.  Change permissions");
+        out.println("7.  Copy Directory");
+        out.println("8.  Rename File/Directory");
+        out.println("9.  View Log History");
+        out.println("10. Close Connection");
+        out.println("Enter an above option number:");
+        //Tests for incorrect input
+        while (!sc.hasNextInt()) {
+            out.print("Enter a valid option: ");
+            sc.nextLine();
+        }
         option = sc.nextInt();
         return option;
     }
