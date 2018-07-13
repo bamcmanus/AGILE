@@ -20,8 +20,7 @@ class User {
     String getPassword() {
         if (promptPassword())
             return pw;
-        else
-            return error;
+        return error;
     }
 
     private boolean promptUsername() {
@@ -35,8 +34,7 @@ class User {
     String getUsername() {
         if (promptUsername())
             return un;
-        else
-            return error;
+        return error;
     }
 
     private boolean promptHostname() {
@@ -50,8 +48,7 @@ class User {
     String getHostname() {
         if (promptHostname())
             return hn;
-        else
-            return error;
+        return error;
     }
 }
 
