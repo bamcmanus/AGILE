@@ -1,13 +1,15 @@
 import java.util.Scanner;
 
-public class newUser {
-    String pw;
-    String un;
-    String hn;
-    Scanner scanner = new Scanner(System.in);
-    String error = "Error";
+class User {
+    //members
+    private String pw;
+    private String un;
+    private String hn;
+    private Scanner scanner = new Scanner(System.in);
+    private String error = "Error";
 
-    public boolean promptPassword() {
+    //methods
+    private boolean promptPassword() {
         System.out.println("Enter your password:");
         pw = scanner.next();
         if (pw == null || pw.isEmpty())
@@ -15,14 +17,13 @@ public class newUser {
         return true;
     }
 
-    public String getPassword() {
+    String getPassword() {
         if (promptPassword())
             return pw;
-        else
-            return error;
+        return error;
     }
 
-    public boolean promptUsername() {
+    private boolean promptUsername() {
         System.out.println("Enter your username:");
         un = scanner.next();
         if (un == null || un.isEmpty())
@@ -30,14 +31,13 @@ public class newUser {
         return true;
     }
 
-    public String getUsername() {
+    String getUsername() {
         if (promptUsername())
             return un;
-        else
-            return error;
+        return error;
     }
 
-    public boolean promptHostname() {
+    private boolean promptHostname() {
         System.out.println("Enter your hostname:");
         hn = scanner.next();
         if (hn == null || hn.isEmpty())
@@ -45,11 +45,10 @@ public class newUser {
         return true;
     }
 
-    public String getHostname() {
+    String getHostname() {
         if (promptHostname())
             return hn;
-        else
-            return error;
+        return error;
     }
 }
 
