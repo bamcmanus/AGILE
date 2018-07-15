@@ -4,9 +4,11 @@ public class Main {
       start.run();
   }
 
-  public void run() {
+  public int run() {
     var mainMenu = new Menu();
 
     mainMenu.mainMenu();
+
+    return 0;
   }
 }
