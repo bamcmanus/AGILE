@@ -1,7 +1,12 @@
 public class Main {
   public static void main(String[] agrs) {
-      var mainMenu = new Menu();
+      Main start = new Main();
+      start.run();
+  }
 
-      mainMenu.mainMenu();
+  public void run() {
+    var mainMenu = new Menu();
+
+    mainMenu.mainMenu();
   }
 }
