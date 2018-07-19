@@ -1,25 +1,25 @@
-import com.jcraft.jsch.Channel;
-import com.jcraft.jsch.ChannelSftp;
-import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.Session;
+import com.jcraft.jsch.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
+import java.util.Vector;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
 
 
 class Client {
+  private static final int TIMEOUT = 10000;
 
-  void Sftp() {
+  private void Sftp() {
     var jsch = new JSch();
     int option;
     var menu = new Menu();
 
-    do{
+    do {
       option = menu.mainMenu();
-      if (option ==1) {
+      if (option == 1) {
         try {
           var user = new User();
           String username = user.getUsername();
@@ -27,12 +27,17 @@ class Client {
           String hostname = user.getHostname();
           Session session = jsch.getSession(username, hostname, 22);
           session.setPassword(password);
-          session.setConfig("StrictHostKeyChecking", "no");
+
+          Properties config = new Properties();
+          config.put("StrictHostKeyChecking", "no");
+          session.setConfig(config);
+
           System.out.println("Establishing Connection...");
-          session.connect();
+          session.connect(TIMEOUT);
 
           Channel channel = session.openChannel("sftp");
-          channel.connect();
+          channel.setInputStream(null);
+          channel.connect(TIMEOUT);
           ChannelSftp cSftp = (ChannelSftp) channel;
 
           System.out.println("Successful SFTP connection");
@@ -42,14 +47,24 @@ class Client {
             switch (option) {
               case 1: //list directories: local and remote option
                 option = menu.displayFilesMenu();
+                //List remote directories
                 if (option == 1) {
-                  System.out.println("Listing remote directories...");
+                  try {
+                    System.out.println("Listing remote directories and files...");
+                    displayRemoteFiles(cSftp);
+                  } catch (SftpException e) {
+                    System.out.println("Error displaying remote files");
+                  }
                 }
+
+                //List local directories
                 if (option == 2) {
                   System.out.println("Listing local directories and files...");
                   File currentDir = new File(".");
                   displayLocalFiles(currentDir);
                 }
+
+
                 break;
 
               case 2: //get file/files: which files, put where
@@ -135,5 +150,24 @@ class Client {
       return -1;
     }
   }
+
+  /**
+   * Lists all directories and files on the user's remote machine.
+   */
+  private static void displayRemoteFiles(ChannelSftp cSftp) throws SftpException {
+    String path = ".";
+    Vector remoteDir = cSftp.ls(path);
+    if (remoteDir != null) {
+      for (int i = 0; i < remoteDir.size(); ++i) {
+        Object dirEntry = remoteDir.elementAt(i);
+        if (dirEntry instanceof ChannelSftp.LsEntry) {
+          System.out.println(((ChannelSftp.LsEntry) dirEntry).getFilename());
+        }
+      }
+    }
+  }
+
+
 }
+
 
