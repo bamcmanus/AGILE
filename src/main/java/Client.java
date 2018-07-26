@@ -1,6 +1,6 @@
 import com.jcraft.jsch.*;
 
-import java.io.File;
+import java.io.*;
 import java.util.Properties;
 import java.util.Scanner;
 import java.util.Vector;
@@ -147,8 +147,71 @@ class Client {
     out.println("This is your new current local working directory: " + lpwd + "\n");
   }
 
+    /**
+     * Executes a command on the remote server.
+     *
+     * Use this function to invoke command line calls and speedline other functions.
+     *
+     * @param command -- the linux command that you are trying to execute on the remote server.
+     */
+  public void remoteExec(String command) {
+    try {
+        Channel channel = session.openChannel("Exec");
+      ((ChannelExec) channel).setCommand(command);
+      channel.setInputStream(null);
+      ((ChannelExec) channel).setErrStream(System.err);
 
 
+      channel.connect();
+      InputStream input = channel.getInputStream();
+      try {
+        InputStreamReader inputReader = new InputStreamReader(input);
+        BufferedReader bufferedReader = new BufferedReader(inputReader);
+        String line = null;
+
+        while ((line = bufferedReader.readLine()) != null) {
+          System.out.println(line);
+        }
+        bufferedReader.close();
+        inputReader.close();
+      } catch (IOException ex) {
+        ex.printStackTrace();
+      }
+
+      channel.disconnect();
+      session.disconnect();
+    } catch (Exception ex) {
+      ex.printStackTrace();
+    }
+  }
+
+  /**
+   * Displays the current remote directory and downloads a user specified file from it to the current local directory.
+   *
+   * @throws SftpException
+   */
+  public void downloadFile() throws SftpException{
+    displayRemoteFiles();
+    out.println("Enter the name of the file that you wish to download.");
+    String filename = scanner.next();
+    cSftp.get(filename);
+    String lpwd = cSftp.lpwd();
+    out.println("The file has been downloaded to: " + lpwd);
+  }
+
+  /**
+   * Displays the current local directory and uploads a user specified file from it to the current remote directory.
+   *
+   * @throws SftpException
+   */
+  public void uploadFile() throws SftpException {
+    displayLocalFiles();
+    out.println("Enter the name of the file that you wish to upload.");
+    String filename = scanner.next();
+    cSftp.put(filename);
+    String pwd = cSftp.pwd();
+    out.println("The file has been uploaded to: " + pwd);
+  }
 }
 
 

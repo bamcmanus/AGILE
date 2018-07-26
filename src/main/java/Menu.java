@@ -74,17 +74,38 @@ class Menu {
       System.out.println("1. List directories and files on remote server");
       System.out.println("2. List directories and files on local machine");
       System.out.println("Enter an above option number");
-      if (!sc.hasNextInt()) {
-        System.out.println("You did not enter a valid option.");
-        sc.next();
-        continue;
-      }
-      option = sc.nextInt();
-      System.out.println(option);
-      if (option != 1 && option != 2) {
-        System.out.println("A valid option was not entered.");
-      }
+        if (!sc.hasNextInt()) {
+            System.out.println("You did not enter a valid option");
+            sc.next();
+            continue;
+        }
+        option = sc.nextInt();
+        if (option != 1 && option != 2) {
+            System.out.println("A valid option was not entered.");
+        }
     }
     return option;
+  }
+
+    /**
+     * This is a sub-menu under working menu item "3. Put file/files" to allow the user to download and upload file(s) to and from the remote server.
+     *
+     * @return an int with a valid option number
+     */
+  int moveFilesMenu(){
+      option = 0;
+      while(option != 1 && option != 2) {
+          System.out.println("1. Download a file.");
+          System.out.println("2. Upload a file");
+          System.out.println("Enter an above option");
+          option = sc.nextInt();
+          if (option != 1 && option != 2) {
+              System.out.println("You did not enter a valid option.");
+          }
+      }
+      if(option != 1 && option != 2){
+          System.out.println("A valid option was not entered.");
+      }
+      return option;
   }
 }
