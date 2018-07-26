@@ -35,17 +35,25 @@ public class Main {
                   out.println("Listing local directories and files...");
                   client.displayLocalFiles();
                 }
-
-
                 break;
 
-              case 2: //get file/files: which files, put where
+              case 2:
                 out.println("Changing local directory...");
                 client.changeLocalWorkingDir();
                 break;
 
               case 3: //put file/files: which files put where
-                out.println("Putting Files...");
+                int moveOption = menu.moveFilesMenu();
+                if(moveOption == 1)
+                {
+                  //download a file
+                  client.downloadFile();
+                }
+                if(moveOption == 2)
+                {
+                  //upload a file
+                  client.uploadFile();
+                }
                 break;
 
               case 4: //create remote directory in current dir: name
