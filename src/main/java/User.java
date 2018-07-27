@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 /**
  * User class for SFTP project.  Used to gather information about a connection
  *
- * @see {@link Client}
  */
 class User {
 
@@ -35,18 +34,29 @@ class User {
     username = null;
   }
 
+  User(String scannerArg) {
+    password = null;
+    hostname = null;
+    username = null;
+    scanner = new Scanner(scannerArg);
+  }
+
   /**
    * Prompts the user for a valid password
    * @return  The password input
    */
   String getPassword() {
     System.out.println("Enter your password:");
-    password = scanner.next();
-    while (password == null || password.isEmpty()) {
+    password = scanner.nextLine();
+    while (password == null || password.isEmpty() || !verifyPassword(password)) {
       System.err.println("You did not enter a password. Enter your password:");
       password = scanner.next();
     }
     return password;
+  }
+
+  private boolean verifyPassword(String password) {
+    return !password.isEmpty() && !password.contains(" ");
   }
 
   /**
@@ -55,11 +65,11 @@ class User {
    */
   String getUsername() {
     System.out.println("Enter your username:");
-    username = scanner.next();
+    username = scanner.nextLine();
     //username = ""; //for testing
     if (username == null || username.isEmpty() || !verifyUsername(username)) {
-      System.err.println("That was not a valid username.  Please enter 8-20 alpha numeric " +
-          "characters.");
+      System.err.println("That was not a valid username.");
+      System.err.println("Please enter 8-20 alpha numeric characters:");
       username = scanner.next(); //comment out for testing
     }
     return username;
@@ -86,11 +96,12 @@ class User {
    */
   String getHostname() {
     System.out.println("Enter your hostname:");
-    hostname = scanner.next();
+    hostname = scanner.nextLine();
     while (hostname == null || hostname.isEmpty() || !verifyHostName(hostname)) {
-      System.out.println("That was not a valid Host Name.");
-      System.out.println("Valid host names are no longer than 255 alpha numeric characters and \n" +
+      System.err.println("That was not a valid Host Name.");
+      System.err.println("Valid host names are no longer than 255 alpha numeric characters and \n" +
           "dashes. Each segment of the host name cannot be longer than 63 characters.");
+      System.out.println("Enter your hostname:");
       hostname = scanner.next();
     }
     return hostname;

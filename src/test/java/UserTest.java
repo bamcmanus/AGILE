@@ -44,6 +44,12 @@ public class UserTest {
   }
 
   @Test
+  public void verifyHostNameCatchesTooLong() {
+    boolean valid = user.verifyHostName("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    assertThat(valid, equalTo(false));
+  }
+
+  @Test
   public void verifyUsernameCatchesShortName() {
     boolean valid = user.verifyUsername("n");
     assertThat(valid, equalTo(false));
@@ -101,8 +107,51 @@ public class UserTest {
     assertThat(valid, equalTo(false));
   }
 
-  /*@Test
-  public void getUsernamePrintsErrorEmpty() {
+  @Test
+  public void getUsernameHappyPath() {
+    String name = "Brent";
+    var user = new User(name);
+    String result = user.getUsername();
+    assertThat(result, equalTo(name));
+  }
 
-  }*/
+  @Test
+  public void getUserNameUnHappyPath() {
+    String name = "Bre..nt\nBrent";
+    var user = new User(name);
+    String result = user.getUsername();
+    assertThat(result, equalTo("Brent"));
+  }
+
+  @Test
+  public void getHostnameHappyPath() {
+    String host = "linux.cs.pdx.edu";
+    var user = new User(host);
+    String result = user.getHostname();
+    assertThat(result, equalTo(host));
+  }
+
+  @Test
+  public void getHostnameUnHappyPath() {
+    String host = "@linux.cs.pdx.edu\nlinux.cs.pdx.edu";
+    var user = new User(host);
+    String result = user.getHostname();
+    assertThat(result, equalTo("linux.cs.pdx.edu"));
+  }
+
+  @Test
+  public void getPasswordHappyPath() {
+    String password = "PA$$w0rd";
+    var user = new User(password);
+    String result = user.getPassword();
+    assertThat(result, equalTo(password));
+  }
+
+  @Test
+  public void getPasswordUnHappyPath() {
+    String password = "test this\nBrent";
+    var user = new User(password);
+    String result = user.getPassword();
+    assertThat(result, equalTo("Brent"));
+  }
 }

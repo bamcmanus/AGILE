@@ -5,9 +5,20 @@ import java.io.File;
 import org.junit.Test;
 
 public class ClientTest {
+  Client client = new Client();
+
   @Test
-  public void test() {
-    assertThat("Default", equalTo("Default"));
+  public void promptConnectionInfoHappyPath() {
+    client = new Client("Brent\npassword\nlinux.cs.pdx.edu");
+    client.promptConnectionInfo();
+    assertThat(client.user.username, equalTo("Brent"));
+    assertThat(client.user.password, equalTo("password"));
+    assertThat(client.user.hostname, equalTo("linux.cs.pdx.edu"));
+  }
+
+  @Test
+  public void baseConstructorInitializationHappyPath() {
+    assertThat(client.session, equalTo(null));
   }
 
   @Test

@@ -14,18 +14,25 @@ import java.util.Vector;
 
 
 class Client {
-  private Scanner scanner = new Scanner(System.in);
-  private static final int TIMEOUT = 10000;
-  private User user;
-  private JSch jsch;
-  private Session session;
-  private ChannelSftp cSftp;
+  Scanner scanner = new Scanner(System.in);
+  static final int TIMEOUT = 10000;
+  User user;
+  JSch jsch;
+  Session session;
+  ChannelSftp cSftp;
 
   /**
    * Class constructor
    */
   public Client() {
     user = new User();
+    jsch = new JSch();
+    session = null;
+    cSftp = new ChannelSftp();
+  }
+
+  public Client(String forTest) {
+    user = new User(forTest);
     jsch = new JSch();
     session = null;
     cSftp = new ChannelSftp();
@@ -44,18 +51,18 @@ class Client {
    * Initiates connection
    */
   void connect() throws JSchException {
-    session = jsch.getSession(user.username, user.hostname, 22);
+    session = jsch.getSession(user.username, user.hostname, 22); //throws exception
     session.setPassword(user.password);
     Properties config = new Properties();
     config.put("StrictHostKeyChecking", "no");
     session.setConfig(config);
 
     out.println("Establishing Connection...");
-    session.connect(TIMEOUT);
+    session.connect(TIMEOUT); //throws exception
 
-    Channel channel = session.openChannel("sftp");
+    Channel channel = session.openChannel("sftp"); //throws exception
     channel.setInputStream(null);
-    channel.connect(TIMEOUT);
+    channel.connect(TIMEOUT); //throws exception
     cSftp = (ChannelSftp) channel;
 
     out.println("Successful SFTP connection");
