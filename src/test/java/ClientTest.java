@@ -1,6 +1,8 @@
+import com.jcraft.jsch.ChannelSftp;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.Vector;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -170,17 +172,17 @@ public class ClientTest {
   @Test
   public void deleteFile(){
     String filename = "myTestFile.txt";
-    String filenames = "testfile2.txt, testfile2.txt";
-    String [] check = {"myTestfile.txt", "testfile2.txt", "testfile2.txt"};
+    String filenames = "testfile.txt, testfile2.txt";
+    String [] check = {"myTestFile.txt", "testfile.txt", "testfile2.txt"};
     int fileFoundCounter = 0;
     Client client = new Client(password, hostName, userName);
     try{
       client.connect();
       try{
         //get the remote directory and look for the files in it to make sure they exist before performing the test
-        File rDir = new File(client.getcSftp().pwd());
-        File[] files = rDir.listFiles();
-        for(File file: files)
+        Vector<ChannelSftp.LsEntry> files = new Vector<ChannelSftp.LsEntry>(client.getcSftp().ls(client.getcSftp().pwd()));
+
+        for(ChannelSftp.LsEntry file : files)
         {
           //we verified that all the files were present before we tried to delete them
           if(fileFoundCounter == 3){
@@ -188,20 +190,21 @@ public class ClientTest {
           }
           //check for the file in the remote directory
           for(int i = 0; i < check.length; i++){
-            if(file.getName() == check[i]){
-              fileFoundCounter++;
+            if(file.getFilename().equals(check[i])){
+              fileFoundCounter+=1;
             }
           }
         }
+        System.out.println("Finished the for loop");
         client.deleteRemoteFile(filename);
         client.deleteRemoteFile(filenames);
 
         fileFoundCounter = 0;
         //this shouldn't increment the counter at all as it shouldn't find any of the files
-        files = rDir.listFiles();
-        for(File file: files){
+        files = client.getcSftp().ls(client.getcSftp().pwd());
+        for(ChannelSftp.LsEntry file: files){
           for(int i = 0; i < check.length; i++){
-            if(file.getName() == check[i]){
+            if(file.getFilename() == check[i]){
               fileFoundCounter++;
             }
           }
