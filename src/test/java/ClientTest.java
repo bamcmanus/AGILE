@@ -143,4 +143,71 @@ public class ClientTest {
       e.printStackTrace();
     }
   }
+
+  /**
+   * Try and delete a file that doesn't exist. This should fail.
+   */
+  @Test
+  public void fakeDeleteFile(){
+    Client client = new Client(password, hostName, userName);
+    try{
+      client.connect();
+
+      try{
+        client.deleteRemoteFile("This is not a real file.");
+      }catch(Exception e){
+        //this is correct
+        System.out.println("Correct, this should fail.");
+      }
+    }catch(Exception e){
+
+    }
+  }
+
+  /**
+   *  Test deleting some files from the remote server.
+   */
+  @Test
+  public void deleteFile(){
+    String filename = "myTestFile.txt";
+    String filenames = "testfile2.txt, testfile2.txt";
+    String [] check = {"myTestfile.txt", "testfile2.txt", "testfile2.txt"};
+    int fileFoundCounter = 0;
+    Client client = new Client(password, hostName, userName);
+    try{
+      client.connect();
+      try{
+        //get the remote directory and look for the files in it to make sure they exist before performing the test
+        File rDir = new File(client.getcSftp().pwd());
+        for(File file: rDir.listFiles())
+        {
+          //we verified that all the files were present before we tried to delete them
+          if(fileFoundCounter == 3){
+            continue;
+          }
+          //check for the file in the remote directory
+          for(int i = 0; i < check.length; i++){
+            if(file.getName() == check[i]){
+              fileFoundCounter++;
+            }
+          }
+        }
+        client.deleteRemoteFile(filename);
+        client.deleteRemoteFile(filenames);
+
+        fileFoundCounter = 0;
+        //this shouldn't increment the counter at all as it shouldn't find any of the files
+        for(File file: rDir.listFiles()){
+          for(int i = 0; i < check.length; i++){
+            if(file.getName() == check[i]){
+              fileFoundCounter++;
+            }
+          }
+        }
+        //if we found no files it should still be 0, meaning they were successfully deleted
+        assert(fileFoundCounter == 0);
+
+      }catch(Exception e){}
+    }catch(Exception e){}
+  }
 }
