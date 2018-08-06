@@ -2,15 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab422a9e-6603-4098-af1f-9a819390f0f2" name="Default" comment="Merge branches 'Log-History' and 'master' of https://github.com/bamcmanus/AGILE into Log-History&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ClientTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,26 +76,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <file leaf-file-name="ClientTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ClientTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1260">
-              <caret line="84" column="42" selection-start-line="84" selection-start-column="42" selection-end-line="84" selection-end-column="42" />
+            <state relative-caret-position="1279">
+              <caret line="146" column="3" lean-forward="true" selection-start-line="146" selection-start-column="3" selection-end-line="146" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#rename#0;class#Main#0" />
-                <element signature="method#changePermission#0;class#Main#0" />
-                <element signature="method#delete#0;class#Main#0" />
-                <element signature="method#createDirectory#0;class#Main#0" />
+                <element signature="e#448#449#0" expanded="true" />
+                <element signature="e#499#500#0" expanded="true" />
+                <element signature="e#5147#5168#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
+            <state relative-caret-position="410">
               <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
               <folding>
                 <element signature="method#localOrRemoteMenu#0;class#Menu#0" />
@@ -102,23 +103,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="67" column="51" selection-start-line="67" selection-start-column="51" selection-end-line="67" selection-end-column="51" />
+            <state relative-caret-position="125">
+              <caret line="89" selection-start-line="89" selection-end-line="89" />
               <folding>
-                <element signature="method#promptConnectionInfo#0;class#Client#0" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#2260#2261#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/User.java">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
+              <caret column="25" selection-start-column="25" selection-end-column="25" />
               <folding>
                 <element signature="docComment;field#password#0;class#User#0" />
                 <element signature="docComment;field#username#0;class#User#0" />
@@ -130,18 +132,6 @@
                 <element signature="method#verifyUsername#0;class#User#0" />
                 <element signature="method#getHostname#0;class#User#0" />
                 <element signature="method#verifyHostName#0;class#User#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Logger.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="45" column="74" selection-start-line="45" selection-start-column="74" selection-end-line="45" selection-end-column="74" />
-              <folding>
-                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -160,7 +150,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="DeleteRemoteFile" />
       </map>
     </option>
   </component>
@@ -172,12 +162,12 @@
         <option value="$PROJECT_DIR$/src/main/java/User.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/test/java/MenuTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ClientTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/MainTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Menu.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/Client.java" />
         <option value="$PROJECT_DIR$/src/main/java/Logger.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ClientTest.java" />
       </list>
     </option>
   </component>
@@ -203,6 +193,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -228,13 +221,23 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="AGILE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AGILE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AGILE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AGILE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -264,84 +267,144 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Client" />
-      <module name="AGILE" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.ClientTest.deleteFile">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AGILE" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="ClientTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AGILE" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="ClientTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
-    <configuration name="MenuTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ClientTest.deleteFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AGILE" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MenuTest" />
+      <option name="MAIN_CLASS_NAME" value="ClientTest" />
+      <option name="METHOD_NAME" value="deleteFile" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="ClientTest.fakeDeleteFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AGILE" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ClientTest" />
+      <option name="METHOD_NAME" value="fakeDeleteFile" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
     <configuration name="UserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AGILE" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="UserTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
       <properties />
       <listeners />
-      <method v="2">
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
       <item itemvalue="JUnit.UserTest" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Client" />
-      <item itemvalue="JUnit.MenuTest" />
       <item itemvalue="JUnit.ClientTest" />
+      <item itemvalue="JUnit.ClientTest.deleteFile" />
+      <item itemvalue="JUnit.ClientTest.fakeDeleteFile" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ClientTest.deleteFile" />
+        <item itemvalue="JUnit.ClientTest.fakeDeleteFile" />
+        <item itemvalue="JUnit.ClientTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.UserTest" />
-        <item itemvalue="JUnit.ClientTest" />
-        <item itemvalue="JUnit.MenuTest" />
-        <item itemvalue="Application.Client" />
       </list>
     </recent_temporary>
   </component>
@@ -378,39 +441,60 @@
       <option name="project" value="LOCAL" />
       <updated>1533246065547</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added tests for deleting file(s) from the remote server.">
+      <created>1533346963902</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1533346963902</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Having some issues getting the remote working directory files.">
+      <created>1533348046603</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1533348046603</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added some modifications to how the list of files are grabbed and search from the remote host.">
+      <created>1533359359656</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1533359359657</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="UserTest - 2018.07.11 at 11h 55m 09s.xml">
-      <configuration name="UserTest" configurationId="JUnit" />
+    <history-entry file="ClientTest_deleteFile - 2018.08.03 at 19h 08m 59s.xml">
+      <configuration name="ClientTest.deleteFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MenuTest_menuReturnsValidInput - 2018.07.11 at 21h 13m 54s.xml">
-      <configuration name="MenuTest.menuReturnsValidInput" configurationId="JUnit" />
+    <history-entry file="ClientTest_deleteFile - 2018.08.03 at 19h 20m 02s.xml">
+      <configuration name="ClientTest.deleteFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MenuTest_menuReturnsValidInput - 2018.07.11 at 21h 13m 45s.xml">
-      <configuration name="MenuTest.menuReturnsValidInput" configurationId="JUnit" />
+    <history-entry file="ClientTest_deleteFile - 2018.08.03 at 19h 21m 37s.xml">
+      <configuration name="ClientTest.deleteFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MenuTest_menuReturnsValidInput - 2018.07.11 at 21h 15m 24s.xml">
-      <configuration name="MenuTest.menuReturnsValidInput" configurationId="JUnit" />
+    <history-entry file="ClientTest_deleteFile - 2018.08.03 at 19h 24m 22s.xml">
+      <configuration name="ClientTest.deleteFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserTest - 2018.07.13 at 13h 05m 44s.xml">
-      <configuration name="UserTest" configurationId="JUnit" />
+    <history-entry file="ClientTest_deleteFile - 2018.08.03 at 19h 26m 53s.xml">
+      <configuration name="ClientTest.deleteFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserTest - 2018.07.13 at 13h 06m 58s.xml">
-      <configuration name="UserTest" configurationId="JUnit" />
+    <history-entry file="ClientTest_deleteFile - 2018.08.03 at 19h 28m 03s.xml">
+      <configuration name="ClientTest.deleteFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MenuTest - 2018.07.24 at 21h 52m 17s.xml">
-      <configuration name="MenuTest" configurationId="JUnit" />
+    <history-entry file="ClientTest_deleteFile - 2018.08.03 at 19h 29m 07s.xml">
+      <configuration name="ClientTest.deleteFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ClientTest - 2018.07.24 at 21h 56m 44s.xml">
-      <configuration name="ClientTest" configurationId="JUnit" />
+    <history-entry file="ClientTest_deleteFile - 2018.08.03 at 19h 29m 37s.xml">
+      <configuration name="ClientTest.deleteFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ClientTest - 2018.07.24 at 21h 57m 16s.xml">
-      <configuration name="ClientTest" configurationId="JUnit" />
+    <history-entry file="ClientTest_deleteFile - 2018.08.03 at 19h 29m 43s.xml">
+      <configuration name="ClientTest.deleteFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserTest - 2018.07.24 at 21h 57m 57s.xml">
-      <configuration name="UserTest" configurationId="JUnit" />
+    <history-entry file="ClientTest_deleteFile - 2018.08.03 at 22h 06m 11s.xml">
+      <configuration name="ClientTest.deleteFile" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
@@ -420,66 +504,66 @@
     <frame x="0" y="22" width="1394" height="825" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28254437" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32756326" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32469305" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39946738" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.33697134" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.3272727" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Coverage" order="5" side_tool="true" visible="true" weight="0.25608012" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3272727" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info id="Image Layers" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32340425" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.33617023" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="Designer" order="2" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.2862426" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39858156" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="right" id="Coverage" order="5" side_tool="true" visible="true" weight="0.25608012" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32756326" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Coverage" order="5" side_tool="true" visible="true" weight="0.25608012" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.33791208" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2714497" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3262317" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32756326" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3262317" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39946738" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.33791208" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32756326" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Coverage" order="5" side_tool="true" visible="true" weight="0.25608012" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info anchor="right" id="Database" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39946738" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32756326" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32756326" />
       <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info id="Favorites" order="6" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -510,9 +594,88 @@
     <MESSAGE value="Libraries added" />
     <MESSAGE value="included menu functionality in the master with added unit tests" />
     <MESSAGE value="Merge branches 'Log-History' and 'master' of https://github.com/bamcmanus/AGILE into Log-History&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branches 'Log-History' and 'master' of https://github.com/bamcmanus/AGILE into Log-History&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <MESSAGE value="Added tests for deleting file(s) from the remote server." />
+    <MESSAGE value="Having some issues getting the remote working directory files." />
+    <MESSAGE value="Added some modifications to how the list of files are grabbed and search from the remote host." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some modifications to how the list of files are grabbed and search from the remote host." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="10" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="80" column="51" selection-start-line="80" selection-start-column="51" selection-end-line="80" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2260#2261#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1260">
+          <caret line="84" column="42" selection-start-line="84" selection-start-column="42" selection-end-line="84" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
+          <folding>
+            <element signature="method#localOrRemoteMenu#0;class#Menu#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="67" column="51" selection-start-line="67" selection-start-column="51" selection-end-line="67" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2260#2261#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
+          <folding>
+            <element signature="docComment;field#password#0;class#User#0" />
+            <element signature="docComment;field#username#0;class#User#0" />
+            <element signature="docComment;field#hostname#0;class#User#0" />
+            <element signature="docComment;field#scanner#0;class#User#0" />
+            <element signature="method#User#0;class#User#0" />
+            <element signature="method#getPassword#0;class#User#0" />
+            <element signature="method#getUsername#0;class#User#0" />
+            <element signature="method#verifyUsername#0;class#User#0" />
+            <element signature="method#getHostname#0;class#User#0" />
+            <element signature="method#verifyHostName#0;class#User#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Logger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="45" column="74" selection-start-line="45" selection-start-column="74" selection-end-line="45" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Agile.iml" />
     <entry file="file://$PROJECT_DIR$/target/classes/newUser.class" />
     <entry file="file://$PROJECT_DIR$/src/test/java/SFTPtest.java" />
@@ -536,13 +699,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ClientTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
@@ -577,39 +733,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Log History 2018-08-02 15:43:42.481.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Client.java">
+    <entry file="file://$PROJECT_DIR$/Log History 2018-08-02 15:43:42.481.txt" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/Logger.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="67" column="51" selection-start-line="67" selection-start-column="51" selection-end-line="67" selection-end-column="51" />
-          <folding>
-            <element signature="method#promptConnectionInfo#0;class#Client#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
-          <folding>
-            <element signature="method#localOrRemoteMenu#0;class#Menu#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="84" column="42" selection-start-line="84" selection-start-column="42" selection-end-line="84" selection-end-column="42" />
+        <state relative-caret-position="446">
+          <caret line="64" column="11" lean-forward="true" selection-start-line="64" selection-start-column="11" selection-end-line="64" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#rename#0;class#Main#0" />
-            <element signature="method#changePermission#0;class#Main#0" />
-            <element signature="method#delete#0;class#Main#0" />
-            <element signature="method#createDirectory#0;class#Main#0" />
           </folding>
         </state>
       </provider>
@@ -617,7 +747,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
+          <caret column="25" selection-start-column="25" selection-end-column="25" />
           <folding>
             <element signature="docComment;field#password#0;class#User#0" />
             <element signature="docComment;field#username#0;class#User#0" />
@@ -633,12 +763,186 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ClientTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="142" column="23" lean-forward="true" selection-start-line="142" selection-start-column="23" selection-end-line="142" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3540">
+          <caret line="236" column="47" selection-start-line="236" selection-start-column="47" selection-end-line="236" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="643">
+          <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
+          <folding>
+            <element signature="method#localOrRemoteMenu#0;class#Menu#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="63" column="3" selection-start-line="63" selection-start-column="3" selection-end-line="63" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2260#2261#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Agile.iml" />
+    <entry file="file://$PROJECT_DIR$/target/classes/newUser.class" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/SFTPtest.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/test_login.java" />
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home/lib/src.zip!/java.base/java/util/Scanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2047">
+          <caret line="309" column="19" selection-start-line="309" selection-start-column="19" selection-end-line="309" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/.name" />
+    <entry file="file://$PROJECT_DIR$/.idea/compiler.xml" />
+    <entry file="file://$PROJECT_DIR$/.idea/AGILE.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/UserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="1" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/MainTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/MenuTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="46" column="21" lean-forward="true" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Log History 2018-08-02 15:43:42.481.txt" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3540">
+          <caret line="238" column="47" selection-start-line="238" selection-start-column="47" selection-end-line="238" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Logger.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="45" column="74" selection-start-line="45" selection-start-column="74" selection-end-line="45" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
+          <folding>
+            <element signature="method#localOrRemoteMenu#0;class#Menu#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="25" selection-start-column="25" selection-end-column="25" />
+          <folding>
+            <element signature="docComment;field#password#0;class#User#0" />
+            <element signature="docComment;field#username#0;class#User#0" />
+            <element signature="docComment;field#hostname#0;class#User#0" />
+            <element signature="docComment;field#scanner#0;class#User#0" />
+            <element signature="method#User#0;class#User#0" />
+            <element signature="method#getPassword#0;class#User#0" />
+            <element signature="method#getUsername#0;class#User#0" />
+            <element signature="method#verifyUsername#0;class#User#0" />
+            <element signature="method#getHostname#0;class#User#0" />
+            <element signature="method#verifyHostName#0;class#User#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/ClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="688" selection-start-line="688" selection-end-line="688" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home/lib/src.zip!/java.base/java/io/File.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="1219" selection-start-line="1219" selection-end-line="1219" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/jsch-0.1.52.jar!/com/jcraft/jsch/ChannelSftp.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13693">
+          <caret line="1113" column="72" selection-start-line="1113" selection-start-column="72" selection-end-line="1113" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2260#2261#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ClientTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1279">
+          <caret line="146" column="3" lean-forward="true" selection-start-line="146" selection-start-column="3" selection-end-line="146" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#448#449#0" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+            <element signature="e#5147#5168#0" expanded="true" />
           </folding>
         </state>
       </provider>
