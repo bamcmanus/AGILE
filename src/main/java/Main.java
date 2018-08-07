@@ -105,6 +105,7 @@ public class Main {
       }
     } while (option != 2);
     out.println("Goodbye");
+    System.exit(0);
   }
 
   /**

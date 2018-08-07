@@ -76,7 +76,7 @@ class User {
 	 */
 	String getUsername() {
 		System.out.println("Enter your username:");
-		username = scanner.next();
+		username = scanner.nextLine();
 		//username = ""; //for testing
 		if (username == null || username.isEmpty() || !verifyUsername(username)) {
 			System.err.println("That was not a valid username.  Please enter 8-20 alpha numeric " +
@@ -109,7 +109,7 @@ class User {
 	 */
 	String getHostname() {
 		System.out.println("Enter your hostname:");
-		hostname = scanner.next();
+		hostname = scanner.nextLine();
 		while (hostname == null || hostname.isEmpty() || !verifyHostName(hostname)) {
 			System.out.println("That was not a valid Host Name.");
 			System.out.println("Valid host names are no longer than 255 alpha numeric characters and \n" +

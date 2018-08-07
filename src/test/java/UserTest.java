@@ -154,4 +154,12 @@ public class UserTest {
 		String result = user.getPassword();
 		assertThat(result, equalTo("Brent"));
 	}
+
+	@Test
+	public void getPasswordEmpytTest() {
+		String password = "\nBrent";
+		var user = new User(password);
+		String result = user.getPassword();
+		assertThat(result,equalTo("Brent"));
+	}
 }

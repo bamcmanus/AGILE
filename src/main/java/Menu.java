@@ -4,10 +4,17 @@ class Menu {
 
 	Scanner sc;
 
+	/**
+	 * Default constructor for menu class
+	 */
 	Menu() {
 		sc = new Scanner(System.in);
 	}
 
+	/**
+	 * Paramaterized constructor allows for hijacking of scanner for unit testing
+	 * @param scannerInput  string to initialize a scanner for testing
+	 */
 	Menu(String scannerInput) {
 		sc = new Scanner(scannerInput);
 	}
@@ -20,7 +27,7 @@ class Menu {
 	int intCheck() {
 		int opt = 0;
 		if (!sc.hasNextInt()) {
-			sc.next();
+			sc.nextLine();
 			return opt;
 		}
 		opt = sc.nextInt();

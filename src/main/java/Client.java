@@ -9,17 +9,42 @@ import static java.lang.System.out;
 
 class Client {
   private Scanner scanner = new Scanner(System.in);
-  private static final int TIMEOUT = 10000;
-  private User user;
+  private int TIMEOUT;
   private JSch jsch;
-  private Session session;
   private ChannelSftp cSftp;
+  User user;
+  Session session;
 
   /**
    * Class constructor
    */
   public Client() {
     user = new User();
+    jsch = new JSch();
+    session = null;
+    cSftp = new ChannelSftp();
+    TIMEOUT = 10000;
+  }
+
+  /**
+   * Paramatarized constructor used for unit testing timeout
+   * @param timeout int with the timeout duration in ms
+   */
+  public Client(int timeout) {
+    TIMEOUT = timeout;
+    user = new User("bmcmanus\npassword\nlinux.cs.pdx.edu\n");
+    jsch = new JSch();
+    session = null;
+    cSftp = new ChannelSftp();
+  }
+
+  /**
+   * Class constructor allows for hijacking of the scanner for unit tests
+   * @param argsForScanner  String for initializing a scanner object
+   */
+  public Client(String argsForScanner) {
+    TIMEOUT = 10000;
+    user = new User(argsForScanner);
     jsch = new JSch();
     session = null;
     cSftp = new ChannelSftp();
@@ -38,18 +63,18 @@ class Client {
    * Initiates connection
    */
   void connect() throws JSchException {
-    session = jsch.getSession(user.username, user.hostname, 22);
+    session = jsch.getSession(user.username, user.hostname, 22); //throws
     session.setPassword(user.password);
     Properties config = new Properties();
     config.put("StrictHostKeyChecking", "no");
     session.setConfig(config);
 
     out.println("Establishing Connection...");
-    session.connect(TIMEOUT);
+    session.connect(TIMEOUT); // throws
 
-    Channel channel = session.openChannel("sftp");
+    Channel channel = session.openChannel("sftp"); // throws
     channel.setInputStream(null);
-    channel.connect(TIMEOUT);
+    channel.connect(TIMEOUT); //throws
     cSftp = (ChannelSftp) channel;
 
     out.println("Successful SFTP connection");
@@ -66,7 +91,7 @@ class Client {
   /**
    * Lists all directories and files on the user's local machine (from the current directory).
    */
-  int displayLocalFiles() {
+  void  displayLocalFiles() {
     File dir = new File(cSftp.lpwd());
     printLocalWorkingDir();
     File[] files = dir.listFiles();
@@ -82,7 +107,6 @@ class Client {
       }
       out.println("\n");
     }
-    return 1;
   }
 
   /**
