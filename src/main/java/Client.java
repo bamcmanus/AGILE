@@ -501,4 +501,45 @@ class Client {
       out.println("The file has been deleted from: " + pwd);
     }
   }
+
+  void saveLoginCredentials() {
+    BufferedWriter writer = null;
+    try {
+      String home = System.getProperty("user.home");
+      writer = new BufferedWriter(new FileWriter(home + "/Downloads/credentials.txt"));
+      writer.write(user.username + "\n" + user.hostname + "\n");
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    } finally {
+      try {
+        if (writer != null)
+          writer.close();
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  void loadLoginCredentials() {
+    BufferedReader reader = null;
+    String u;
+    String h;
+    try {
+      String home = System.getProperty("user.home");
+      reader = new BufferedReader(new FileReader(home + "/Downloads/credentials.txt"));
+      u = reader.readLine();
+      h = reader.readLine();
+    } catch (IOException e) {
+      e.printStackTrace();
+    } finally {
+      try {
+        if (reader != null)
+          reader.close();
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+
+  }
 }
