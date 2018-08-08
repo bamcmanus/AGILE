@@ -297,7 +297,24 @@ class Client {
   }
 
   /**
-   * Rename local files/directories
+   * Called by renameLocal() to rename local files/directories
+   * @return true if file or directory is renamed successfully
+   */
+  boolean renameLocal(File file, File renamed) {
+    if (!file.exists()) {
+      return false;
+    }
+    if (file.renameTo(renamed)) {
+      out.println(file + " has been renamed to: " + renamed + "\n");
+      return true;
+    } else {
+      out.println("Error: rename unsuccessful.\n");
+      return false;
+    }
+  }
+
+  /**
+   * Wrapper for rename local files/directories method
    */
   void renameLocal() {
     boolean repeat = true;
