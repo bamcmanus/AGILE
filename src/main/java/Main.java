@@ -8,7 +8,7 @@ public class Main {
 
 
   public static void main(String[] args) {
-    Client client = new Client(); //init client class
+    Client client;
     int option;
     var menu = new Menu();
     Scanner scanner = new Scanner(System.in);
@@ -17,9 +17,22 @@ public class Main {
       option = menu.mainMenu();
 
       switch (option) {
-        case 1:
+        case 1: //establish connection
+          client = new Client(); //init client class
           try {
-            client.promptConnectionInfo();
+            if(client.loadLoginCredentials()) { //if credentials found
+              do {
+                out.println("Login credentials found: ");
+                out.println(client.userInfo());
+                option = menu.existingCredentialsMenu(); //prompt menu
+                if(option == 1)
+                  client.getPassword();
+                if(option == 2)
+                  client.promptConnectionInfo();
+              } while (option != 1 && option != 2);
+            } else {
+              client.promptConnectionInfo();
+            }
             client.connect();
 
             do {
@@ -86,6 +99,16 @@ public class Main {
                   break;
 
                 case 10: //exit
+                  int saveOption;
+                  do {
+                    saveOption = menu.saveCredentialsMenu();
+                    if(saveOption == 1) {
+                      client.saveLoginCredentials();
+                    }
+                    if(saveOption == 2) {
+                      client.deleteLoginCredentials();
+                    }
+                  } while (saveOption != 1 && saveOption != 2);
                   out.println("Closing connection...");
                   client.disconnect();
                   break;

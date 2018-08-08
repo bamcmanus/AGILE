@@ -14,7 +14,7 @@ class Client {
   private JSch jsch;
   private Session session;
   private ChannelSftp cSftp;
-  private Logger logger;
+  private Logger logger = new Logger();
 
   /**
    * Class constructor
@@ -43,8 +43,11 @@ class Client {
    * Prompts for connection information
    */
   void promptConnectionInfo() {
+    logger.log("Prompting user for username.");
     user.getUsername();
+    logger.log("Prompting user for password.");
     user.getPassword();
+    logger.log("Prompting user for hostname.");
     user.getHostname();
   }
 
@@ -52,7 +55,6 @@ class Client {
    * Initiates connection
    */
   void connect() throws JSchException {
-    logger = new Logger();
     session = jsch.getSession(user.username, user.hostname, 22);
     session.setPassword(user.password);
     Properties config = new Properties();
@@ -502,44 +504,51 @@ class Client {
     }
   }
 
+  /**
+   * wrapper function for user function of same name
+   */
   void saveLoginCredentials() {
-    BufferedWriter writer = null;
-    try {
-      String home = System.getProperty("user.home");
-      writer = new BufferedWriter(new FileWriter(home + "/Downloads/credentials.txt"));
-      writer.write(user.username + "\n" + user.hostname + "\n");
-
-    } catch (IOException e) {
-      e.printStackTrace();
-    } finally {
-      try {
-        if (writer != null)
-          writer.close();
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-    }
+    logger.log("Saving login credentials: " + userInfo() + "...");
+    user.saveLoginCredentials();
   }
 
-  void loadLoginCredentials() {
-    BufferedReader reader = null;
-    String u;
-    String h;
-    try {
-      String home = System.getProperty("user.home");
-      reader = new BufferedReader(new FileReader(home + "/Downloads/credentials.txt"));
-      u = reader.readLine();
-      h = reader.readLine();
-    } catch (IOException e) {
-      e.printStackTrace();
-    } finally {
-      try {
-        if (reader != null)
-          reader.close();
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
+  /**
+   * wrapper function for user function of same name
+   */
+  boolean loadLoginCredentials() {
+    logger.log("Loading login credentials...");
+    if(user.loadLoginCredentials()) {
+      logger.log("Login credentials found: " + userInfo());
+      return true;
     }
+    logger.log("Login credentials not found.");
+    return false;
+  }
 
+  /**
+   * wrapper function for user function of same name
+   */
+  void deleteLoginCredentials() {
+    logger.log("Deleting login credentials...");
+    if (user.deleteLoginCredentials())
+      logger.log("Credentials not found or successfully deleted.");
+    else
+      logger.log("Credentials found and not successfully deleted.");
+  }
+
+  /**
+   * wrapper function for user function of same name
+   */
+  void getPassword() {
+    logger.log("Prompting user for password.");
+    user.getPassword();
+  }
+
+  /**
+   * @return username and hostname as single string with @ in between
+   * i.e. username@hostmachine.org
+   */
+  String userInfo() {
+    return user.username + "@" + user.hostname;
   }
 }

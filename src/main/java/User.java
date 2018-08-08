@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -123,4 +124,71 @@ class User {
     return matcher.matches();
   }
 
+
+  /**
+   * Saves login credentials to a txt file
+   */
+  void saveLoginCredentials() {
+    BufferedWriter writer = null;
+    try {
+      String home = System.getProperty("user.home");
+      writer = new BufferedWriter(new FileWriter(home + "/Downloads/credentials.txt"));
+      writer.write(username + "\n" + hostname + "\n");
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    } finally {
+      try {
+        if (writer != null)
+          writer.close();
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  /**
+   * Loads login credentials from a txt file
+   *
+   * @return
+   * true when credentials found
+   * false if credentials not found or exception encountered
+   */
+  boolean loadLoginCredentials() {
+    BufferedReader reader = null;
+
+    try {
+      String home = System.getProperty("user.home");
+      reader = new BufferedReader(new FileReader(home + "/Downloads/credentials.txt"));
+      username = reader.readLine();
+      hostname = reader.readLine();
+    } catch (IOException e) {
+      e.printStackTrace();
+      return false;
+    } finally {
+      try {
+        if (reader != null)
+          reader.close();
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+    return true;
+  }
+
+  /**
+   * Deletes login credentials from a txt file
+   *
+   * @return
+   * true if file doesn't exist or gets deleted
+   * false if file found and not deleted
+   */
+  boolean deleteLoginCredentials() {
+    String home = System.getProperty("user.home");
+    File file = new File(home + "/Downloads/credentials.txt");
+    if (file.exists()) {
+      return file.delete();
+    }
+    return true;
+  }
 }
