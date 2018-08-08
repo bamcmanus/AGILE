@@ -1,7 +1,9 @@
 import org.junit.Test;
+
+import java.io.File;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
-import java.io.File;
 
 public class ClientTest {
   /**
@@ -139,5 +141,10 @@ public class ClientTest {
       System.out.println("There was an error somewhere.");
       e.printStackTrace();
     }
+  }
+
+  @Test
+  public void localRename_RenameLocalFile_ReturnTrue() {
+
   }
 }
