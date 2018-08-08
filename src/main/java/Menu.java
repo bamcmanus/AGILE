@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 class Menu {
-
   Scanner sc;
 
   Menu() {

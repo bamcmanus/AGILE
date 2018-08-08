@@ -43,14 +43,14 @@ class Logger {
 	 * creates a new .txt file to store the logs in and saves it to
 	 * the local machine's Downloads directory
 	 *
-	 * @param userhost used to name the file (i.e. username@hostmachine.org)
+	 * @param userHost used to name the file (i.e. username@hostmachine.org)
 	 * @return
 	 * 0 for success
 	 * 1 for error
 	 */
-	int save(String userhost) {
+	int save(String userHost) {
 		timestamp = new Timestamp(System.currentTimeMillis());
-		String filename = "SFTP Log History - " + userhost + " " + timestamp + ".txt";
+		String filename = "SFTP Log History - " + userHost + " " + timestamp + ".txt";
 		BufferedWriter writer = null;
 		try {
 			String home = System.getProperty("user.home");

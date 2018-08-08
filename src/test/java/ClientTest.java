@@ -11,9 +11,9 @@ public class ClientTest {
   /**
    * These need to be filled in before the tests will run properly.
    */
-  private String userName = "username";
-  private String password = "password";
-  private String hostName = "hostname";
+  private String userName = "u";
+  private String password = "p";
+  private String hostName = "h";
 
   // TODO
   @Test
@@ -45,8 +45,8 @@ public class ClientTest {
   /**
    * Trying to upload a file should result in an error. Expects an SftpException.
    */
-  @Test (expected = SftpException.class)
-  public void uploadFakeFile_expectsSftpException() throws SftpException{
+  @Test(expected = SftpException.class)
+  public void uploadFakeFile_expectsSftpException() throws SftpException {
     Client client = new Client(password, hostName, userName);
     client.connect();
 
@@ -57,7 +57,7 @@ public class ClientTest {
   /**
    * Should throw exception when file not found when upload attempted
    */
-  @Test (expected = SftpException.class)
+  @Test(expected = SftpException.class)
   public void uploadFile_expectsSftpException_NoSuchFile() throws SftpException {
     String fileName = "MissingTextFile.txt";
 
@@ -74,7 +74,7 @@ public class ClientTest {
   public void uploadFile_assertsFileExists() throws SftpException, IOException {
     String fileName = "testfile.txt";
     File file = new File(fileName);
-    if(file.createNewFile())
+    if (file.createNewFile())
       System.out.println("Added testfile.txt to local");
     else
       System.out.println("Could not add testfile.txt to local");
@@ -92,7 +92,7 @@ public class ClientTest {
     System.out.println("Now deleting the files you uploaded.");
     client.deleteRemoteFile(fileName);
     assertThat(pass, equalTo(true));
-    if(file.delete())
+    if (file.delete())
       System.out.println("Deleted testfile.txt from local");
     else
       System.out.println("Could not delete testfile.txt from local");
@@ -101,7 +101,7 @@ public class ClientTest {
   /**
    * Asserts uploaded file was deleted. stat() throws exception if filename is not found.
    */
-  @Test (expected = SftpException.class)
+  @Test(expected = SftpException.class)
   public void deleteFile_expectsSftpException() throws SftpException {
     String fileName = "testfile.txt";
     SftpATTRS attrs = null;
@@ -120,7 +120,7 @@ public class ClientTest {
    */
   @Test
   public void downloadFakeFile() {
-    Client client = new Client("Oatman641!", "linux.cs.pdx.edu", "brambora");
+    Client client = new Client(password, hostName, userName);
     try {
       client.connect();
 
@@ -146,7 +146,7 @@ public class ClientTest {
     String fileName = "testfile.txt";
     String fileName2 = "testfile.txt, testfile2.txt";
 
-    Client client = new Client("Oatman641!", "linux.cs.pdx.edu", "brambora");
+    Client client = new Client(password, hostName, userName);
     try {
       client.connect();
 
@@ -187,4 +187,6 @@ public class ClientTest {
     System.out.println(dirName + " was created successfully");
     client.getcSftp().rmdir(dirName);        //clean up
   }
+
+
 }

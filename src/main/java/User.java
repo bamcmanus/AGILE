@@ -142,7 +142,6 @@ class User {
     return matcher.matches();
   }
 
-
   /**
    * Saves login credentials to a txt file
    */
