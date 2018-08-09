@@ -1,6 +1,9 @@
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 
 import java.io.File;
+import java.io.IOException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -143,8 +146,25 @@ public class ClientTest {
     }
   }
 
-  @Test
-  public void localRename_RenameLocalFile_ReturnTrue() {
+  /**
+   * Asserts whether a local file is renamed successfully
+   * @throws IOException
+   */
+  @Rule
+  public TemporaryFolder folder = new TemporaryFolder();
 
+  @Test
+  public void localRename_RenameLocalFile_Success() throws IOException {
+    Client client = new Client();
+    String filename = "FileYouWantToRename.txt";
+    File file = folder.newFile(filename);
+    file.createNewFile();
+    String rename = "RenamedFile.txt";
+    File renamed = new File(rename);
+
+    client.renameLocal(file, renamed);
+    File renamedFile = new File(rename);
+
+    assertThat(renamedFile.exists(), equalTo(true));
   }
 }

@@ -302,7 +302,7 @@ class Client {
    */
   boolean renameLocal(File file, File renamed) {
     if (!file.exists()) {
-      return false;
+    return false;
     }
     if (file.renameTo(renamed)) {
       out.println(file + " has been renamed to: " + renamed + "\n");
@@ -337,7 +337,7 @@ class Client {
         out.println("A file or directory by this name already exists. Overwrite? (yes/no)");
         input = scanner.next();
         if ((input.equalsIgnoreCase("yes") || (input.equalsIgnoreCase("y")))) {
-          if (originalFile.renameTo(renamedFile)) {
+          if (renameLocal(originalFile, renamedFile)) {
             out.println(filename + " has been overwritten.\n");
           } else {
             out.println("Error: rename unsuccessful.\n");
@@ -346,7 +346,7 @@ class Client {
         }
       }
       if (!renamedFile.exists()) {
-        if (originalFile.renameTo(renamedFile)) {
+        if (renameLocal(originalFile, renamedFile)) {
           out.println(filename + " has been renamed to: " + newFilename + "\n");
         } else {
           out.println("Error: rename unsuccessful.\n");
