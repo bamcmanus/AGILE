@@ -148,6 +148,7 @@ public class ClientTest {
 
   /**
    * Asserts that a local file is renamed successfully
+   *
    * @throws IOException
    */
   @Rule
@@ -166,5 +167,20 @@ public class ClientTest {
     File renamedFile = new File(rename);
 
     assertThat(renamedFile.exists(), equalTo(true));
+  }
+
+  @Test
+  public void localRename_DirectoryRenamed_Success() throws IOException {
+    Client client = new Client();
+    String directoryName = "DirectoryYouWantToRename";
+    File directory = folder.newFolder(directoryName);
+    directory.mkdir();
+    String rename = "RenamedDirectory";
+    File renamed = new File(rename);
+
+    client.renameLocal(directory, renamed);
+    File renamedDirectory = new File(rename);
+
+    assertThat(renamedDirectory.exists(), equalTo(true));
   }
 }
