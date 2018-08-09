@@ -147,14 +147,14 @@ public class ClientTest {
   }
 
   /**
-   * Asserts whether a local file is renamed successfully
+   * Asserts that a local file is renamed successfully
    * @throws IOException
    */
   @Rule
   public TemporaryFolder folder = new TemporaryFolder();
 
   @Test
-  public void localRename_RenameLocalFile_Success() throws IOException {
+  public void localRename_FileRenamed_Success() throws IOException {
     Client client = new Client();
     String filename = "FileYouWantToRename.txt";
     File file = folder.newFile(filename);

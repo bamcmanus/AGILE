@@ -302,7 +302,7 @@ class Client {
    */
   boolean renameLocal(File file, File renamed) {
     if (!file.exists()) {
-    return false;
+      return false;
     }
     if (file.renameTo(renamed)) {
       out.println(file + " has been renamed to: " + renamed + "\n");
@@ -444,7 +444,7 @@ class Client {
       }
     }
   }
-  
+
   /**
    * Create a directory on the user's local machine.
    */
@@ -485,10 +485,10 @@ class Client {
     logger.display();
     logger.log("displayLogHistory called");
   }
-  
+
   /**
    * Deletes a file from the remote server. Can take one or multiple files in the format "testfile.txt, testfile2.txt"
-   * 
+   *
    * @param files -- The string read in main containing the names of the files.
    */
   void deleteRemoteFile(String files){
