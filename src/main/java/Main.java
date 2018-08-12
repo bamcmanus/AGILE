@@ -11,6 +11,7 @@ public class Main {
     Client client = new Client(); //init client class
     int option;
     var menu = new Menu();
+    var file_transfer_retries = 3;
     Scanner scanner = new Scanner(System.in);
 
     do {
@@ -30,30 +31,33 @@ public class Main {
                   break;
 
                 case 2: //download a file
-                  try {
-                    out.println("Listing remote directories and files...");
-                    client.displayRemoteFiles();
-                    out.println("Please enter the name of the file(s) you'd like to download. Example usage: file1.txt, file2.txt");
-                    String filename = scanner.nextLine();
-                    client.downloadFile(filename);
-                  } catch (SftpException e) {
-                    out.println("Error downloading file");
-                    e.printStackTrace();
+                  for(int i = 0; i < file_transfer_retries; i++) {
+                    try {
+                      out.println("Listing remote directories and files...");
+                      client.displayRemoteFiles();
+                      out.println("Please enter the name of the file(s) you'd like to download. Example usage: file1.txt, file2.txt");
+                      String filename = scanner.nextLine();
+                      client.downloadFile(filename);
+                    } catch (SftpException e) {
+                      out.println("Error downloading file");
+                      e.printStackTrace();
+                    }
                   }
                   break;
 
                 case 3: //upload a file
-                  try {
-                    out.println("Listing local directories and files...");
-                    client.displayLocalFiles();
-                    out.println("Please enter the name of the file(s) you'd like to download. Example usage: file1.txt, file2.txt");
-                    String filename = scanner.nextLine();
-                    client.uploadFile(filename);
-                  } catch (SftpException e) {
-                    out.println("Error uploading file");
-                    e.printStackTrace();
+                  for(int i = 0; i < file_transfer_retries; i++) {
+                    try {
+                      out.println("Listing local directories and files...");
+                      client.displayLocalFiles();
+                      out.println("Please enter the name of the file(s) you'd like to upload. Example usage: file1.txt, file2.txt");
+                      String filename = scanner.nextLine();
+                      client.uploadFile(filename);
+                    } catch (SftpException e) {
+                      out.println("Error uploading file, retrying upload");
+                      e.printStackTrace();
+                    }
                   }
-
                   break;
 
                 case 4: //create remote directory in current dir: name
