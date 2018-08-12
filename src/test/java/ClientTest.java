@@ -183,4 +183,13 @@ public class ClientTest {
 
     assertThat(renamedDirectory.exists(), equalTo(true));
   }
+
+
+  /**
+   * Asserts that local files and directories are displayed successfully
+   */
+  @Test
+  public void displayLocalFiles_FilesAndDirectoriesDisplayed_Success() {
+
+  }
 }
