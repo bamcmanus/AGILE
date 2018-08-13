@@ -196,6 +196,7 @@ public class Main {
           break;
         case 6:
           System.out.println("Change permissions remote directory...");
+          client.changeRemotePermissions();
           break;
         case 7: //return to previous
           break;

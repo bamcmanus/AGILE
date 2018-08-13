@@ -579,4 +579,26 @@ class Client {
       out.println("The file has been deleted from: " + pwd);
     }
   }
+
+  /**
+   * Changes the permissions of a file or directory on the connected remote server.
+   */
+  boolean changeRemotePermissions() {
+    String pwd = "";
+    String targetName = "";
+    String permissionType = "";
+    try {
+      out.println("Enter name of file or directory for permission changing");
+      targetName = scanner.next();
+      out.println("Enter permission setting (ex: 777)");
+      permissionType = scanner.next();
+      cSftp.chmod(Integer.parseInt(permissionType, 8), targetName);
+    } catch (Exception e) {
+      out.println("Error: failed to change target's " + pwd + "permissions");
+      logger.log(e.getMessage());
+      return false;
+    }
+    return true;
+  }
+
 }
