@@ -180,7 +180,7 @@ class User {
       username = reader.readLine();
       hostname = reader.readLine();
     } catch (IOException e) {
-      e.printStackTrace();
+      System.out.println("No previous login credentials found.");
       return false;
     } finally {
       try {

@@ -198,10 +198,10 @@ public class UserTest {
    * checks to make sure document has correct data
    */
   @Test
-  public void saveUserCredentials_VerifyFileContents() {
+  public void saveAndLoaUserCredentials_VerifyFileContents() {
     String home = System.getProperty("user.home");
     File file = new File(home + "/Downloads/credentials.txt");
-    if(file.exists()) {
+    if (file.exists()) {
       if (file.delete())
         System.out.println("Old file found and deleted.");
       else
@@ -211,16 +211,18 @@ public class UserTest {
     user.saveLoginCredentials();
 
     user = new User();
-    if(user.loadLoginCredentials())
-      System.out.println("Credentials loaded successfully.");
-    else
-      System.out.println("Credentials could not be loaded.");
     boolean result = true;
-    if(!user.username.equals("username")) {
+    if (user.loadLoginCredentials())
+      System.out.println("Credentials loaded successfully.");
+    else {
+      System.out.println("Credentials could not be loaded.");
+      result = false;
+    }
+    if (!user.username.equals("username")) {
       System.out.println("Username doesn't match.");
       result = false;
     }
-    if(!user.hostname.equals("hostname")) {
+    if (!user.hostname.equals("hostname")) {
       System.out.println("Hostname doesn't match.");
       result = false;
     }
@@ -228,18 +230,33 @@ public class UserTest {
   }
 
   /**
-   *
-   */
-  @Test
-  public void loadUserCredentials() {
-
-  }
-
-  /**
-   *
+   *  Checks to make sure delete is working correctly
    */
   @Test
   public void deleteUserCredentials() {
-
+    String home = System.getProperty("user.home");
+    File file = new File(home + "/Downloads/credentials.txt");
+    boolean result = true;
+    if (file.exists()) {
+      if (file.delete())
+        System.out.println("Old file found and deleted.");
+      else {
+        System.out.println("Old file found and NOT deleted.");
+        result = false;
+      }
+    }
+    user = new User("password","hostname","username");
+    user.saveLoginCredentials();
+    if (file.exists()) {
+      user.deleteLoginCredentials();
+    } else {
+      System.out.println("Failure to save credentials.");
+      result = false;
+    }
+    if (file.exists()) {
+      System.out.println("Failure to delete credentials.");
+      result = false;
+    }
+    assertThat(result, equalTo(true));
   }
 }

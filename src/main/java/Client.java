@@ -551,7 +551,7 @@ class Client {
    */
   boolean loadLoginCredentials() {
     logger.log("Loading login credentials...");
-    if(user.loadLoginCredentials()) {
+    if (user.loadLoginCredentials()) {
       logger.log("Login credentials found: " + userInfo());
       return true;
     }

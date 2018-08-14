@@ -32,7 +32,8 @@ public class Main {
             } else {
               client.promptConnectionInfo();
             }
-            client.connect();
+            if(!client.connect())
+              break;
 
             do {
               option = menu.workingMenu();
