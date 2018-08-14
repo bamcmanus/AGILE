@@ -81,4 +81,21 @@ class Menu {
     return intCheck();
   }
 
+  /**
+   *  Menu for copying remote directory
+   *
+   * @return 0 if non number entered, else a number was entered
+   */
+  int copyRemoteDirectoryMenu(String operation) {
+    System.out.println("1. View current local directory");
+    System.out.println("2. View current remote directory");
+    System.out.println("3. Change local directory");
+    System.out.println("4. Change remote directory");
+    System.out.println("5. " + operation + " remote");
+    System.out.println("6. Back to main menu");
+    System.out.println("Enter an above option number");
+
+    return intCheck();
+  }
+
 }

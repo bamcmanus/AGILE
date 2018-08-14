@@ -12,6 +12,7 @@ public class Main {
     int option;
     var menu = new Menu();
     Scanner scanner = new Scanner(System.in);
+    Logger logger = new Logger();
 
     do {
       option = menu.mainMenu();
@@ -38,7 +39,8 @@ public class Main {
                     client.downloadFile(filename);
                   } catch (SftpException e) {
                     out.println("Error downloading file");
-                    e.printStackTrace();
+                    out.println("To resume your download, please try to download the file again");
+                    logger.log(e.getMessage());
                   }
                   break;
 
@@ -51,7 +53,8 @@ public class Main {
                     client.uploadFile(filename);
                   } catch (SftpException e) {
                     out.println("Error uploading file");
-                    e.printStackTrace();
+                    out.println("To resume your upload, please try to upload the file again");
+                    logger.log(e.getMessage());
                   }
 
                   break;
@@ -71,8 +74,9 @@ public class Main {
                   changePermission(client);
                   break;
 
-                case 7: //copy directory
+                case 7: //copy remote directory
                   out.println("Copying directories...");
+                  copyRemoteDirectory(client);
                   break;
 
                 case 8: //rename file
@@ -349,5 +353,40 @@ public class Main {
           break;
       }
     } while (opt != 7);
+  }
+
+  private static void copyRemoteDirectory(Client client) throws SftpException {
+    var menu = new Menu();
+    int opt;
+    do {
+      opt = menu.copyRemoteDirectoryMenu("Copy");
+      switch (opt) {
+        case 1:
+          System.out.println("View local directory");
+          client.printLocalWorkingDir();
+          break;
+        case 2:
+          System.out.println("View remote directory");
+          client.printRemoteWorkingDir();
+          break;
+        case 3:
+          System.out.println("Changed local directory");
+          client.changeLocalWorkingDir();
+          break;
+        case 4:
+          System.out.println("Changed remote directory");
+          client.changeRemoteWorkingDir();
+          break;
+        case 5:
+          System.out.println("Copy remote directory");
+          client.copyRemoteDirectory();
+          break;
+        case 6: //return to previous menu
+          break;
+        default:
+          System.err.println("You did not enter a valid option");
+          break;
+      }
+    } while (opt != 6);
   }
 }

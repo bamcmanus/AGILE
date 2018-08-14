@@ -579,4 +579,50 @@ class Client {
       out.println("The file has been deleted from: " + pwd);
     }
   }
+
+  /**
+   *  Copy remote directory
+   */
+  void copyRemoteDirectory() {
+
+    // Get current absolute path
+    String pwd;
+    try {
+      pwd = cSftp.pwd();
+    }
+    catch (Exception e) {
+      out.println("Failed to copy directories");
+      logger.log(e.getMessage());
+      return;
+    }
+
+    // Get target directory name
+    out.println("Which directory would you like to copy?");
+    String sourceDir = scanner.nextLine();
+
+    out.println("Where would you like to copy the directories contents too?");
+    String targetDir = scanner.nextLine();
+
+    // Create command to make new directory
+    String command = "cp -r \"" + sourceDir + "\" \"" + targetDir + "\"";
+
+    //Execute command on remote host
+    try {
+      ChannelExec channel = (ChannelExec) session.openChannel("exec");
+      BufferedReader in = new BufferedReader(new InputStreamReader(channel.getInputStream()));
+      channel.setCommand(command);
+      channel.connect();
+
+      String msg;
+      while ((msg = in.readLine()) != null) {
+        System.out.println(msg);
+      }
+
+      channel.disconnect();
+      out.println("Directory Copy was successful");
+    } catch (Exception e) {
+      out.println("Error: Unable to copy directory");
+      logger.log(e.getMessage());
+    }
+  }
 }
