@@ -597,6 +597,9 @@ class Client {
 
     // Get target directory name
     out.println("Which directory would you like to copy?");
+    String sourceDir = scanner.nextLine();
+
+    out.println("Where would you like to copy the directories contents too?");
     String targetDir = scanner.nextLine();
 
     // Create command to make new directory
@@ -605,10 +608,10 @@ class Client {
     try {
       ChannelExec channel = (ChannelExec) session.openChannel("exec");
       BufferedReader in = new BufferedReader(new InputStreamReader(channel.getInputStream()));
-      channel.setCommand("mkdir lalala;");
+      channel.setCommand("cp -r " + sourceDir + " " + targetDir);
       channel.connect();
 
-      String msg = null;
+      String msg;
       while ((msg = in.readLine()) != null) {
         System.out.println(msg);
       }
@@ -617,6 +620,5 @@ class Client {
     } catch (Exception e) {
       e.printStackTrace();
     }
-
   }
 }
