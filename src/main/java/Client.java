@@ -367,7 +367,7 @@ class Client {
     if (file.renameTo(renamed)) {
       out.println(file + " has been renamed to: " + renamed + "\n");
       return true;
-    } else {
+    } else {:
       out.println("Error: rename unsuccessful.\n");
       return false;
     }
@@ -405,7 +405,7 @@ class Client {
         input = scanner.next();
         if ((input.equalsIgnoreCase("yes") || (input.equalsIgnoreCase("y")))) {
           if (renameLocal(originalFile, renamedFile)) {
-            out.println(filename + " has been overwritten.\n");
+            out.println(oldFilename + " has been overwritten.\n");
           } else {
             out.println("Error: rename unsuccessful.\n");
           }
@@ -414,7 +414,7 @@ class Client {
       }
       if (!renamedFile.exists()) {
         if (renameLocal(originalFile, renamedFile)) {
-          out.println(filename + " has been renamed to: " + newFilename + "\n");
+          out.println(oldFilename + " has been renamed to: " + newFilename + "\n");
         } else {
           out.println("Error: rename unsuccessful.\n");
         }
