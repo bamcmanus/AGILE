@@ -359,7 +359,7 @@ public class Main {
     var menu = new Menu();
     int opt;
     do {
-      opt = menu.localOrRemoteMenu("Copy");
+      opt = menu.copyRemoteDirectoryMenu("Copy");
       switch (opt) {
         case 1:
           System.out.println("View local directory");

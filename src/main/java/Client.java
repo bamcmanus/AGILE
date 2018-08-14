@@ -593,6 +593,7 @@ class Client {
     catch (Exception e) {
       out.println("Failed to copy directories");
       logger.log(e.getMessage());
+      return;
     }
 
     // Get target directory name
@@ -617,8 +618,10 @@ class Client {
       }
 
       channel.disconnect();
+      out.println("Directory Copy was successful");
     } catch (Exception e) {
-      e.printStackTrace();
+      out.println("Error: Unable to copy directory");
+      logger.log(e.getMessage());
     }
   }
 }
