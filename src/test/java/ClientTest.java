@@ -169,6 +169,11 @@ public class ClientTest {
     assertThat(renamedFile.exists(), equalTo(true));
   }
 
+  /**
+   * Asserts that a local directory is renamed successfully
+   *
+   * @throws IOException
+   */
   @Test
   public void localRename_DirectoryRenamed_Success() throws IOException {
     Client client = new Client();
