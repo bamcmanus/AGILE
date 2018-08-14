@@ -585,19 +585,22 @@ class Client {
    */
   boolean changeRemotePermissions() {
     String pwd = "";
-    String targetName = "";
-    String permissionType = "";
+    String targetName;
+    String permissionType;
     try {
+      pwd = cSftp.pwd();
       out.println("Enter name of file or directory for permission changing");
-      targetName = scanner.next();
+      targetName = scanner.nextLine();
       out.println("Enter permission setting (ex: 777)");
-      permissionType = scanner.next();
+      permissionType = scanner.nextLine();
       cSftp.chmod(Integer.parseInt(permissionType, 8), targetName);
     } catch (Exception e) {
       out.println("Error: failed to change target's " + pwd + "permissions");
       logger.log(e.getMessage());
       return false;
     }
+    logger.log("Chmod successful");
+    out.println("Permission change successful");
     return true;
   }
 
