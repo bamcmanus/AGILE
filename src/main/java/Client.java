@@ -604,12 +604,13 @@ class Client {
     String targetDir = scanner.nextLine();
 
     // Create command to make new directory
+    String command = "cp -r \"" + sourceDir + "\" \"" + targetDir + "\"";
 
     //Execute command on remote host
     try {
       ChannelExec channel = (ChannelExec) session.openChannel("exec");
       BufferedReader in = new BufferedReader(new InputStreamReader(channel.getInputStream()));
-      channel.setCommand("cp -r " + sourceDir + " " + targetDir);
+      channel.setCommand(command);
       channel.connect();
 
       String msg;
