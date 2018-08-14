@@ -306,7 +306,7 @@ class Client {
       String output = sb.toString();
       out.println(output);
     } else {
-      cSftp.put(filename, filename);
+      cSftp.put(filename, filename,null, ChannelSftp.RESUME);
       String pwd = cSftp.pwd();
       out.println(filename + " has been uploaded to: " + pwd);
     }
@@ -338,7 +338,7 @@ class Client {
       String output = sb.toString();
       out.println(output);
     } else {
-      cSftp.get(filename, filename);
+      cSftp.get(filename, filename, null, ChannelSftp.RESUME);
       String lpwd = cSftp.lpwd();
       out.println("The file has been downloaded to: " + lpwd);
     }
