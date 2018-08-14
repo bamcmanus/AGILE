@@ -1,13 +1,8 @@
+import com.jcraft.jsch.SftpATTRS;
+import com.jcraft.jsch.SftpException;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
-
-import java.io.File;
-import java.io.IOException;
-
-import com.jcraft.jsch.SftpATTRS;
-import com.jcraft.jsch.SftpException;
-import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -26,13 +21,27 @@ public class ClientTest {
   private String password = "p";
   private String hostName = "h";
 
-  // TODO
+  @Rule
+  public TemporaryFolder folder = new TemporaryFolder();
+
+  /**
+   * Asserts that local files and directories are displayed successfully
+   */
   @Test
-  public void verifyDisplayLocalDirectoriesAndFiles() {
+  public void displayLocalFiles_FilesAndDirectoriesDisplayed_Success() throws IOException {
+    ByteArrayOutputStream output = new ByteArrayOutputStream();
+    PrintStream stdout = System.out;
+    String filename = "fileToDisplay.txt";
+    File file = folder.newFile(filename);
+    file.createNewFile();
+
     Client client = new Client();
-    int expected = 1;
-    // int actual = client.displayLocalFiles();
-    // assertThat(expected, equalTo(actual));
+    System.setOut(new PrintStream(output)); //Redirect print stream
+    client.displayLocalFiles();
+    System.setOut(stdout); //Reset print stream to System.out
+    System.out.println("New local file successfully displayed.\n");
+
+    assertThat(output.toString(), containsString(filename));
   }
 
   /**
@@ -297,8 +306,6 @@ public class ClientTest {
    *
    * @throws IOException
    */
-  @Rule
-  public TemporaryFolder folder = new TemporaryFolder();
 
   @Test
   public void localRename_FileRenamed_Success() throws IOException {
@@ -328,13 +335,5 @@ public class ClientTest {
     File renamedDirectory = new File(rename);
 
     assertThat(renamedDirectory.exists(), equalTo(true));
-  }
-
-  /**
-   * Asserts that local files and directories are displayed successfully
-   */
-  @Test
-  public void displayLocalFiles_FilesAndDirectoriesDisplayed_Success() {
-
   }
 }
