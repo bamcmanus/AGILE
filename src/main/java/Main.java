@@ -12,6 +12,7 @@ public class Main {
     int option;
     var menu = new Menu();
     Scanner scanner = new Scanner(System.in);
+    Logger logger = new Logger();
 
     do {
       option = menu.mainMenu();
@@ -38,7 +39,8 @@ public class Main {
                     client.downloadFile(filename);
                   } catch (SftpException e) {
                     out.println("Error downloading file");
-                    e.printStackTrace();
+                    out.println("To resume your download, please try to download the file again");
+                    logger.log(e.getMessage());
                   }
                   break;
 
@@ -51,7 +53,8 @@ public class Main {
                     client.uploadFile(filename);
                   } catch (SftpException e) {
                     out.println("Error uploading file");
-                    e.printStackTrace();
+                    out.println("To resume your upload, please try to upload the file again");
+                    logger.log(e.getMessage());
                   }
 
                   break;
