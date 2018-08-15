@@ -358,7 +358,36 @@ class Client {
   }
 
   /**
-   * Rename local files/directories
+   * Rename file on remote directory
+   */
+  void renameRemoteFile() throws SftpException {
+    out.println("Enter the original file name: ");
+    String filename = scanner.next();
+    out.println("Enter the new file name: ");
+    String newFilename = scanner.next();
+    cSftp.rename(filename, newFilename);
+    out.println(filename + " has been renamed to: " + newFilename + "\n");
+  }
+
+  /**
+   * Called by renameLocal() to rename local files/directories
+   * @return true if file or directory is renamed successfully
+   */
+  boolean renameLocal(File file, File renamed) {
+    if (!file.exists()) {
+      return false;
+    }
+    if (file.renameTo(renamed)) {
+      out.println(file + " has been renamed to: " + renamed + "\n");
+      return true;
+    } else {:
+      out.println("Error: rename unsuccessful.\n");
+      return false;
+    }
+  }
+
+  /**
+   * Wrapper for rename local files/directories method
    */
   void renameLocal() {
     boolean repeat = true;
@@ -388,13 +417,16 @@ class Client {
         out.println("A file or directory by this name already exists. Overwrite? (yes/no)");
         input = scanner.next();
         if ((input.equalsIgnoreCase("yes") || (input.equalsIgnoreCase("y")))) {
-          rename = true;
+          if (renameLocal(originalFile, renamedFile)) {
+            out.println(oldFilename + " has been overwritten.\n");
+          } else {
+            out.println("Error: rename unsuccessful.\n");
+          }
+          repeat = false;
         }
-      } else {
-        rename = true;
       }
-      if (rename) {
-        if (originalFile.renameTo(renamedFile)) {
+      if (!renamedFile.exists()) {
+        if (renameLocal(originalFile, renamedFile)) {
           out.println(oldFilename + " has been renamed to: " + newFilename + "\n");
         } else {
           out.println("Error: rename unsuccessful.\n");

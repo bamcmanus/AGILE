@@ -1,6 +1,8 @@
 import com.jcraft.jsch.SftpATTRS;
 import com.jcraft.jsch.SftpException;
 import org.junit.Test;
+import org.junit.Rule;
+import org.junit.rules.TemporaryFolder;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -211,6 +213,49 @@ public class ClientTest {
       System.out.println("There was an error somewhere.");
       e.printStackTrace();
     }
+  }
+
+  /**
+   * Asserts that a local file is renamed successfully
+   *
+   * @throws IOException
+   */
+  @Rule
+  public TemporaryFolder folder = new TemporaryFolder();
+
+  @Test
+  public void localRename_FileRenamed_Success() throws IOException {
+    Client client = new Client();
+    String filename = "FileYouWantToRename.txt";
+    File file = folder.newFile(filename);
+    file.createNewFile();
+    String rename = "RenamedFile.txt";
+    File renamed = new File(rename);
+
+    client.renameLocal(file, renamed);
+    File renamedFile = new File(rename);
+
+    assertThat(renamedFile.exists(), equalTo(true));
+  }
+
+  /**
+   * Asserts that a local directory is renamed successfully
+   *
+   * @throws IOException
+   */
+  @Test
+  public void localRename_DirectoryRenamed_Success() throws IOException {
+    Client client = new Client();
+    String directoryName = "DirectoryYouWantToRename";
+    File directory = folder.newFolder(directoryName);
+    directory.mkdir();
+    String rename = "RenamedDirectory";
+    File renamed = new File(rename);
+
+    client.renameLocal(directory, renamed);
+    File renamedDirectory = new File(rename);
+
+    assertThat(renamedDirectory.exists(), equalTo(true));
   }
 
   /**
