@@ -15,17 +15,36 @@ public class ClientTest {
   /**
    * These need to be filled in before the tests will run properly.
    */
-  private String userName = "username";
-  private String password = "password";
-  private String hostName = "hostname";
+  private String userName = "u";
+  private String password = "p";
+  private String hostName = "h";
 
-  // TODO
   @Test
-  public void verifyDisplayLocalDirectoriesAndFiles() {
-    Client client = new Client();
-    int expected = 1;
-    // int actual = client.displayLocalFiles();
-    // assertThat(expected, equalTo(actual));
+  public void displayLocalFiles_assertsFilesAndDirectoriesDisplay()  {
+    Client client = new Client(password, hostName, userName);
+    ByteArrayOutputStream output = new ByteArrayOutputStream();
+    PrintStream stdout = System.out;
+    String dirName = "newDirectory";
+    File newDir = new File(dirName);
+    boolean pass = false;
+
+    if(!client.connect()) {
+      System.out.println("Failed connection. Unable to run test.");
+      assert(false);
+    }
+
+    if (client.createLocalDir(newDir)) {
+      System.setOut(new PrintStream(output));   //Redirect printstream
+      client.displayLocalFiles();
+      assertThat(output.toString(), containsString(dirName));   //Assert output contains new dir
+      newDir.delete();            //clean up
+      System.setOut(stdout);      //Reset printstream to System.out
+      System.out.println("New local file successfully displayed. New dir has been deleted.");
+      pass = true;
+    } else
+      System.out.println("Error in createLocalDir");
+
+    assertThat(pass, equalTo(true));
   }
 
   /**

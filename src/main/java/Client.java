@@ -110,7 +110,7 @@ class Client {
   /**
    * Lists all directories and files on the user's local machine (from the current directory).
    */
-  int displayLocalFiles() {
+  void displayLocalFiles() {
     logger.log("displayLocalFiles called");
     File dir = new File(cSftp.lpwd());
     printLocalWorkingDir();
@@ -127,13 +127,12 @@ class Client {
       }
       out.println("\n");
     }
-    return 1;
   }
 
   /**
    * Lists all directories and files on the user's remote machine.
    */
-  boolean displayRemoteFiles() {
+  void displayRemoteFiles() {
     logger.log("displayRemoteFiles called");
 
     try {
@@ -153,10 +152,8 @@ class Client {
         }
         out.println("\n");
       }
-      return true;
     } catch (SftpException e) {
       System.out.println("Error displaying remote files");
-      return false;
     }
   }
 
