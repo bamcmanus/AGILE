@@ -14,7 +14,7 @@ class Client {
   private JSch jsch;
   private Session session;
   private ChannelSftp cSftp;
-  private Logger logger;
+  private Logger logger = new Logger();
 
   /**
    * Class constructor
@@ -28,7 +28,6 @@ class Client {
 
   /**
    * A constructor taking username, password and hostname to facilitate creating a connection quickly.
-   *
    * @param password -- Your password
    * @param hostName -- Your host
    * @param userName -- Your username
@@ -44,8 +43,11 @@ class Client {
    * Prompts for connection information
    */
   void promptConnectionInfo() {
+    logger.log("Prompting user for username.");
     user.getUsername();
+    logger.log("Prompting user for password.");
     user.getPassword();
+    logger.log("Prompting user for hostname.");
     user.getHostname();
   }
 
@@ -53,7 +55,6 @@ class Client {
    * Initiates connection
    */
   boolean connect() {
-    logger = new Logger();
     try {
       session = jsch.getSession(user.username, user.hostname, 22);
       session.setPassword(user.password);
@@ -109,7 +110,7 @@ class Client {
   /**
    * Lists all directories and files on the user's local machine (from the current directory).
    */
-  int displayLocalFiles() {
+  void displayLocalFiles() {
     logger.log("displayLocalFiles called");
     File dir = new File(cSftp.lpwd());
     printLocalWorkingDir();
@@ -126,13 +127,12 @@ class Client {
       }
       out.println("\n");
     }
-    return 1;
   }
 
   /**
    * Lists all directories and files on the user's remote machine.
    */
-  boolean displayRemoteFiles() {
+  void displayRemoteFiles() {
     logger.log("displayRemoteFiles called");
 
     try {
@@ -152,10 +152,8 @@ class Client {
         }
         out.println("\n");
       }
-      return true;
     } catch (SftpException e) {
       System.out.println("Error displaying remote files");
-      return false;
     }
   }
 
@@ -409,7 +407,6 @@ class Client {
   /*
   /**
    * Executes a command on the remote server.
-   *
    * @param command -- The text command that you'd like to execute. (Ex: "ls -a" or "cd mydirectory")
    */
   /*
@@ -558,7 +555,6 @@ class Client {
 
   /**
    * Deletes a file from the remote server. Can take one or multiple files in the format "testfile.txt, testfile2.txt"
-   *
    * @param files -- The string read in main containing the names of the files.
    */
   void deleteRemoteFile(String files) {
@@ -594,5 +590,53 @@ class Client {
         out.println("Error deleting remote files.");
       }
     }
+  }
+
+  /**
+   * wrapper function for user function of same name
+   */
+  void saveLoginCredentials() {
+    logger.log("Saving login credentials: " + userInfo() + "...");
+    user.saveLoginCredentials();
+  }
+
+  /**
+   * wrapper function for user function of same name
+   */
+  boolean loadLoginCredentials() {
+    logger.log("Loading login credentials...");
+    if (user.loadLoginCredentials()) {
+      logger.log("Login credentials found: " + userInfo());
+      return true;
+    }
+    logger.log("Login credentials not found.");
+    return false;
+  }
+
+  /**
+   * wrapper function for user function of same name
+   */
+  void deleteLoginCredentials() {
+    logger.log("Deleting login credentials...");
+    if (user.deleteLoginCredentials())
+      logger.log("Credentials not found or successfully deleted.");
+    else
+      logger.log("Credentials found and not successfully deleted.");
+  }
+
+  /**
+   * wrapper function for user function of same name
+   */
+  void getPassword() {
+    logger.log("Prompting user for password.");
+    user.getPassword();
+  }
+
+  /**
+   * @return username and hostname as single string with @ in between
+   * i.e. username@hostmachine.org
+   */
+  String userInfo() {
+    return user.username + "@" + user.hostname;
   }
 }

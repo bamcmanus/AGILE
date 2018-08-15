@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 class Menu {
-
   Scanner sc;
 
   Menu() {
@@ -81,4 +80,27 @@ class Menu {
     return intCheck();
   }
 
+  /**
+   * Menu invoked when existing saved credentials are found
+   *
+   * @return zero if non number entered, else the number entered
+   */
+  int existingCredentialsMenu() {
+    System.out.println("1. Use saved credentials");
+    System.out.println("2. Enter new credentials");
+    System.out.println("Enter an above option number");
+    return intCheck();
+  }
+
+  /**
+   * Menu invoked when closing connection
+   *
+   * @return zero if non number entered, else the number entered
+   */
+  int saveCredentialsMenu() {
+    System.out.println("1. Save login credentials (username and hostname)");
+    System.out.println("2. Don't save / delete login credentials");
+    System.out.println("Enter an above option number");
+    return intCheck();
+  }
 }

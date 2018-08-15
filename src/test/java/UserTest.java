@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import java.io.File;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
@@ -86,7 +88,7 @@ public class UserTest {
   }
 
   @Test
-  public void vefifyUserNameAllowsAlphaNumeric() {
+  public void verifyUserNameAllowsAlphaNumeric() {
     boolean valid = user.verifyUsername("ThisIsValid");
     assertThat("Username was valid", valid);
   }
@@ -156,7 +158,7 @@ public class UserTest {
   }
 
   @Test
-  public void getPasswordEmpytTest() {
+  public void getPasswordEmptyTest() {
     String password = "\nBrent";
     var user = new User(password);
     String result = user.getPassword();
@@ -164,7 +166,7 @@ public class UserTest {
   }
 
   @Test
-  public void paramaterizedConstructorWorks() {
+  public void parameterizedConstructorWorks() {
     String validPass = "dafa";
     String validUser = "thisGuy";
     String validHost = "linux.cs.pdx.edu";
@@ -172,5 +174,89 @@ public class UserTest {
     assertThat(user.password, equalTo(validPass));
     assertThat(user.hostname, equalTo(validHost));
     assertThat(user.username, equalTo(validUser));
+  }
+
+  /**
+   * checks to make sure file is created when saving user credentials
+   */
+  @Test
+  public void saveUserCredentials_VerifyFileExists() {
+    String home = System.getProperty("user.home");
+    File file = new File(home + "/Downloads/credentials.txt");
+    if(file.exists()) {
+      if (file.delete())
+        System.out.println("Old file found and deleted.");
+      else
+        System.out.println("Old file found and NOT deleted.");
+    }
+    user = new User("username","password","hostname");
+    user.saveLoginCredentials();
+    assertThat(file.exists(), equalTo(true));
+  }
+
+  /**
+   * checks to make sure document has correct data
+   */
+  @Test
+  public void saveAndLoaUserCredentials_VerifyFileContents() {
+    String home = System.getProperty("user.home");
+    File file = new File(home + "/Downloads/credentials.txt");
+    if (file.exists()) {
+      if (file.delete())
+        System.out.println("Old file found and deleted.");
+      else
+        System.out.println("Old file found and NOT deleted.");
+    }
+    user = new User("password","hostname","username");
+    user.saveLoginCredentials();
+
+    user = new User();
+    boolean result = true;
+    if (user.loadLoginCredentials())
+      System.out.println("Credentials loaded successfully.");
+    else {
+      System.out.println("Credentials could not be loaded.");
+      result = false;
+    }
+    if (!user.username.equals("username")) {
+      System.out.println("Username doesn't match.");
+      result = false;
+    }
+    if (!user.hostname.equals("hostname")) {
+      System.out.println("Hostname doesn't match.");
+      result = false;
+    }
+    assertThat(result, equalTo(true));
+  }
+
+  /**
+   *  Checks to make sure delete is working correctly
+   */
+  @Test
+  public void deleteUserCredentials() {
+    String home = System.getProperty("user.home");
+    File file = new File(home + "/Downloads/credentials.txt");
+    boolean result = true;
+    if (file.exists()) {
+      if (file.delete())
+        System.out.println("Old file found and deleted.");
+      else {
+        System.out.println("Old file found and NOT deleted.");
+        result = false;
+      }
+    }
+    user = new User("password","hostname","username");
+    user.saveLoginCredentials();
+    if (file.exists()) {
+      user.deleteLoginCredentials();
+    } else {
+      System.out.println("Failure to save credentials.");
+      result = false;
+    }
+    if (file.exists()) {
+      System.out.println("Failure to delete credentials.");
+      result = false;
+    }
+    assertThat(result, equalTo(true));
   }
 }
