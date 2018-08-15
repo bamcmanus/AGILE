@@ -154,7 +154,7 @@ public class UserTest {
     String password = "test this\nBrent";
     var user = new User(password);
     String result = user.getPassword();
-    assertThat(result, equalTo("Brent"));
+    assertThat(result, equalTo("test"));
   }
 
   @Test

@@ -24,7 +24,14 @@ Open the project in IntelliJ IDEA using Jave SE 10.
 
 ## Testing
 
-All unit tests are located in the [test](src/test/java/) folder and require the login variables to be updated to credentials for a valid SFTP connection.
+All unit tests are located in the [test](src/test/java/) folder.
+The ClientTest class requires login variables to be updated with user credentials for a valid SFTP connection:
+
+```  
+  private String userName = "u";
+  private String password = "p";
+  private String hostName = "h";
+``` 
 
 ## Deployment
 
